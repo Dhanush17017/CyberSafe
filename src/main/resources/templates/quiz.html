@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberSafe Quiz</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #0d1117; color: #e6edf3; margin: 0; padding: 20px; }
+        h1 { text-align: center; color: #58a6ff; }
+        .quiz-container { max-width: 700px; margin: auto; background: #161b22; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 15px #30363d; }
+        .question { margin-bottom: 15px; }
+        .options label { display: block; padding: 8px; margin: 5px 0; border: 1px solid #30363d; border-radius: 6px; cursor: pointer; background: #21262d; }
+        .options input { margin-right: 10px; }
+        button { display: block; margin: 20px auto; padding: 10px 20px; border: none; background: #238636; color: white; border-radius: 6px; cursor: pointer; font-size: 16px; }
+        button:hover { background: #2ea043; }
+        #result { text-align: center; font-size: 18px; margin-top: 20px; padding: 15px; border-radius: 8px; background: #21262d; }
+    </style>
+</head>
+<body>
+<h1>Cybersecurity Awareness Quiz</h1>
+<div class="quiz-container" id="quiz"></div>
+<button onclick="submitQuiz()">Submit Quiz</button>
+<div id="result"></div>
+
+<script>
+    const quizData = [
+      { q: "1. What does 'phishing' usually involve?", options: ["Fake emails/websites", "Strong encryption", "Firewall bypass", "Password cracking"], answer: 0 },
+      { q: "2. Which is the safest password?", options: ["123456", "password123", "Qw!7$kL9@p", "yourname123"], answer: 2 },
+      { q: "3. What does HTTPS stand for?", options: ["HyperText Transfer Protocol Secure", "High Transfer Text Protocol System", "Hyperlink Transfer Protection Service", "Hybrid Text Protocol Secure"], answer: 0 },
+      { q: "4. Which one is an example of multi-factor authentication?", options: ["Password only", "Password + OTP", "PIN only", "Username only"], answer: 1 },
+      { q: "5. A firewall is used to?", options: ["Detect malware", "Block unauthorized access", "Encrypt files", "Speed up internet"], answer: 1 },
+      { q: "6. Which is NOT a type of cyberattack?", options: ["DDoS", "SQL Injection", "Brute Force", "Data Backup"], answer: 3 },
+      { q: "7. Ransomware does what?", options: ["Steals your data silently", "Encrypts files and demands money", "Improves computer speed", "Protects passwords"], answer: 1 },
+      { q: "8. Which one is a social engineering attack?", options: ["Phishing", "SQL Injection", "Cross-site scripting", "Keylogging"], answer: 0 },
+      { q: "9. What should you do before clicking a link in an email?", options: ["Check sender and link address", "Click quickly", "Download attachment first", "Forward to all friends"], answer: 0 },
+      { q: "10. What is a VPN mainly used for?", options: ["Hide your IP & secure connection", "Speed up downloads", "Hack other computers", "Store files"], answer: 0 },
+      { q: "11. What is the main purpose of encryption?", options: ["Store data safely", "Convert data into unreadable format", "Delete malware", "Increase computer speed"], answer: 1 },
+      { q: "12. Which one is NOT good cyber hygiene?", options: ["Using unique passwords", "Regular software updates", "Sharing passwords with friends", "Enabling MFA"], answer: 2 },
+      { q: "13. What does SQL Injection target?", options: ["Database", "Browser", "Firewall", "Email"], answer: 0 },
+      { q: "14. Which is an example of biometric authentication?", options: ["Password", "Fingerprint", "PIN", "Username"], answer: 1 },
+      { q: "15. Which type of malware copies itself to spread?", options: ["Trojan", "Worm", "Spyware", "Ransomware"], answer: 1 }
+    ];
+
+    const quizContainer = document.getElementById("quiz");
+    quizData.forEach((item, index) => {
+      const div = document.createElement("div");
+      div.classList.add("question");
+      div.innerHTML = `<p>${item.q}</p>`;
+      const optionsDiv = document.createElement("div");
+      optionsDiv.classList.add("options");
+      item.options.forEach((opt, i) => { optionsDiv.innerHTML += `<label><input type="radio" name="q${index}" value="${i}"> ${opt}</label>`; });
+      div.appendChild(optionsDiv);
+      quizContainer.appendChild(div);
+    });
+
+    function submitQuiz() {
+      let score = 0;
+      quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        if (selected && parseInt(selected.value) === item.answer) score++;
+      });
+      let courseSuggestion = "";
+      if (score <= 5) courseSuggestion = "We recommend starting with: <b>Beginner Cybersecurity Awareness Course</b>";
+      else if (score <= 10) courseSuggestion = "Great! You should try: <b>Intermediate Network Security Course</b>";
+      else courseSuggestion = "Excellent! Go for: <b>Advanced Ethical Hacking & Cyber Defense Course</b>";
+      document.getElementById("result").innerHTML = `✅ You scored <b>${score}</b> out of ${quizData.length}.<br>${courseSuggestion}`;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Threat Feed</title>
+</head>
+<body>
+<h1>Live Threat Intelligence Feed</h1>
+
+<div id="feed">
+    <ul>
+        <li th:each="incident : ${incidents}">
+            <strong th:text="${incident.title}"></strong>
+            (<span th:text="${incident.date}"></span>)
+            - <em th:text="${incident.tip}"></em>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <!-- Link to CSS -->
+    <link rel="stylesheet" th:href="@{/css/auth.css}">
+</head>
+<body>
+<div class="auth-container">
+    <h1 class="auth-heading">Be Aware, Not Afraid</h1>
+    <p class="auth-tagline">Login to explore cyber awareness tips & stay alert.</p>
+
+    <form th:action="@{/login}" method="post" class="auth-form">
+        <input type="text" name="username" placeholder="Enter Username" required>
+        <input type="password" name="password" placeholder="Enter Password" required>
+        <button type="submit">Login</button>
+    </form>
+
+    <p class="auth-switch">New here? <a th:href="@{/register}">Register</a></p>
+</div>
+</body>
+</html>
