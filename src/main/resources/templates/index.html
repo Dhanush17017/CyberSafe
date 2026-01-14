@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberSafe</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <style>
+        /* Chatbot styles */
+        #chatbot-container {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 320px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background: #f9f9f9;
+            z-index: 999;
+            border-radius: 10px;
+        }
+        #chatbot-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #0073e6;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 10px 10px 0 0;
+        }
+        #chat-box {
+            height: 200px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            padding: 5px;
+            margin: 10px 0;
+            background: #fff;
+            border-radius: 5px;
+        }
+        #chat-input {
+            width: 75%;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        #chat-send-btn {
+            padding: 5px 10px;
+            border: none;
+            background: #0073e6;
+            color: black;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        /* Floating chatbot icon */
+        #chatbot-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 40px;
+            color: #0073e6;
+            cursor: pointer;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+<!-- Navbar -->
+<section id="Home">
+    <nav>
+        <div class="logo">
+            <img src="images/logoimag.png" alt="CyberSafe">
+        </div>
+        <ul>
+            <li><a href="#Home" class="button button--is-active">Home</a></li>
+            <li><a href="#Tips">Tips</a></li>
+            <li><a href="#Threats">Threats</a></li>
+            <li><a href="#Pricing">Pricing</a></li>
+            <li><a href="#Resources">Resources</a></li>
+
+            <li><a href="/quiz">Quiz</a></li>
+            <li><a href="#Contact">Contact</a></li>
+        </ul>
+        <div class="icon">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-solid fa-user-shield"></i>
+        </div>
+        <form action="/logout" method="post" style="display:inline;">
+            <button type="submit" class="logout-btn">Logout</button>
+        </form>
+
+
+    </nav>
+
+
+    <div class="main">
+        <div class="men_text">
+            <h1>Welcome to <span>CyberSafe</span><br>Stay Smart, Stay Secure</h1>
+        </div>
+    </div>
+
+    <p>
+        CyberSafe is your trusted platform to learn about cybersecurity, threats, and digital hygiene.
+        From understanding phishing scams to securing your online identity, we help you stay safe in the digital world.
+    </p>
+
+    <div class="main_btn">
+        <a href="#Tips">Get Started</a>
+        <i class="fa-solid fa-angle-right"></i>
+    </div>
+</section>
+<div class="tips" id="Tips">
+    <h1>Cyber<span> Tips</span></h1>
+    <div class="menu_box">
+        <div class="menu_card">
+            <h2>Use Strong Passwords</h2>
+            <iframe width="320" height="240"
+                    src="https://www.youtube.com/embed/IhlXtBNNuKs"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+            </iframe>
+            <p>Always use complex passwords and enable two-factor authentication.</p>
+        </div>
+        <div class="menu_card">
+            <h2>Think Before You Click</h2>
+            <iframe width="320" height="240"
+                    src="https://www.youtube.com/embed/lonTsrGAN9E"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+            </iframe>
+            <p>Avoid suspicious links and attachments in emails or SMS.</p>
+        </div>
+        <div class="menu_card">
+            <h2>Update Software Regularly</h2>
+            <iframe width="320" height="240"
+                    src="https://www.youtube.com/embed/jly_XuSaer0"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+            </iframe>
+            <p>Keep your devices and apps updated to avoid security vulnerabilities.</p>
+        </div>
+        <div class="menu_card">
+            <h2>Use Secure Wi-Fi</h2>
+            <iframe width="320" height="240"
+                    src="https://www.youtube.com/embed/XcghUy-8VRA"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+            </iframe>
+            <p>Avoid public Wi-Fi for banking or sensitive logins. Use VPN when possible.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Threats Section -->
+<div class="threats" id="Threats">
+    <h1>Cyber<span> Threats</span></h1>
+    <div class="menu_box">
+        <div class="menu_card">
+            <h2>Phishing</h2>
+            <p>Fake emails/websites trick you into giving up sensitive info.</p>
+            <a href="https://youtu.be/sS3mZVCARZg" target="_blank">Watch Video</a>
+        </div>
+        <div class="menu_card">
+            <h2>Ransomware</h2>
+            <p>Malware that locks files until you pay a ransom.</p>
+            <a href="https://youtu.be/e_CrzLvDHI8" target="_blank">Watch Video</a>
+        </div>
+        <div class="menu_card">
+            <h2>Identity Theft</h2>
+            <p>Hackers stealing your personal info for fraud.</p>
+            <a href="https://youtu.be/WR05ihL-F_I" target="_blank">Watch Video</a>
+        </div>
+        <div class="menu_card">
+            <h2>Malware</h2>
+            <p>Viruses and spyware that damage or spy on your system.</p>
+            <a href="https://youtu.be/AfZxUK9U3hE" target="_blank">Watch Video</a>
+        </div>
+    </div>
+</div>
+<!-- Edit Section -->
+<section id="Pricing" class="content-section">
+    <h2 class="section-title">Courses & Pricing</h2>
+    <div class="courses-container">
+        <div class="course-card">
+            <h3>Beginner Cyber Safety</h3>
+            <p>Learn the basics of online safety, strong passwords, and avoiding common scams.</p>
+            <span class="price">₹499</span>
+            <button class="enroll-btn">Enroll Now</button>
+        </div>
+        <div class="course-card">
+            <h3>Intermediate Security</h3>
+            <p>Dive deeper into safe browsing, phishing detection, and personal data protection.</p>
+            <span class="price">₹999</span>
+            <button class="enroll-btn">Enroll Now</button>
+        </div>
+        <div class="course-card">
+            <h3>Advanced Threat Protection</h3>
+            <p>Learn advanced techniques for cyber defense and secure digital practices.</p>
+            <span class="price">₹1999</span>
+            <button class="enroll-btn">Enroll Now</button>
+        </div>
+    </div>
+</section>
+
+
+
+<i id="chatbot-icon" class="fa-solid fa-robot" title="Open Chatbot"></i>
+
+<!-- Chatbot Container -->
+<div id="chatbot-container">
+    <div id="chatbot-header">
+        <span>Cyber Safety Chatbot</span>
+        <span style="cursor:pointer;" onclick="closeChat()">&#10005;</span>
+    </div>
+    <div id="chat-box">
+        <div><em>Hi! I can help you with phishing, ransomware, malware, and identity theft tips. Ask me anything about cyber threats.</em></div>
+    </div>
+    <input type="text" id="chat-input" placeholder="Type your question..." />
+    <button id="chat-send-btn" onclick="sendMessage()">Send</button>
+</div>
+
+<!-- Resources Section -->
+<div class="resources" id="Resources">
+    <h1>Useful<span> Resources</span></h1>
+    <ul>
+        <li><a href="https://staysafeonline.org" target="_blank">Stay Safe Online</a></li>
+        <li><a href="https://www.cisa.gov/cybersecurity" target="_blank">CISA Cybersecurity</a></li>
+        <li><a href="https://haveibeenpwned.com" target="_blank">Check if your email is hacked</a></li>
+        <li><a href="https://owasp.org" target="_blank">OWASP Top 10 Security Risks</a></li>
+    </ul>
+</div>
+
+
+
+<!-- Footer -->
+<footer>
+    <div class="footer_main">
+        <p>&copy; 2025 CyberSafe | All Rights Reserved</p>
+    </div>
+</footer>
+
+<script>
+    // Video Modal functions
+    function openVideo(url) {
+        document.getElementById("videoFrame").src = url;
+        document.getElementById("videoModal").style.display = "block";
+    }
+    function closeVideo() {
+        document.getElementById("videoFrame").src = "";
+        document.getElementById("videoModal").style.display = "none";
+    }
+
+    // Chatbot functions
+    const chatbotIcon = document.getElementById('chatbot-icon');
+    const chatbotContainer = document.getElementById('chatbot-container');
+
+    chatbotIcon.addEventListener('click', () => {
+        chatbotContainer.style.display = 'block';
+    });
+
+    function closeChat() {
+        chatbotContainer.style.display = 'none';
+    }
+
+    function sendMessage() {
+    const input = document.getElementById('chat-input').value;
+    if (!input) return;
+
+    const chatBox = document.getElementById('chat-box');
+    chatBox.innerHTML += `<div><strong>You:</strong> ${input}</div>`;
+
+fetch('/chatbot?message=' + encodeURIComponent(input))
+    .then(response => response.text())
+    .then(reply => {
+        chatBox.innerHTML += `<div><strong>Bot:</strong> ${reply}</div>`;
+        chatBox.scrollTop = chatBox.scrollHeight;
+    })
+    .catch(err => {
+        chatBox.innerHTML += `<div style="color:red;"><strong>Bot:</strong> Server not reachable.</div>`;
+        console.error(err);
+    });
+}
+
+
+
+</script>
+</body>
+</html>
