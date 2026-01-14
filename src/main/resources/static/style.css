@@ -1,0 +1,354 @@
+/* Reset + General Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    color: white;
+    background: black;
+    overflow-x: hidden;
+    padding-top: 80px; /* Navbar space */
+}
+
+/* Slideshow background animation */
+body {
+    animation: slidebg 20s infinite;
+    background-size: cover;
+    background-position: center;
+    transition: background-image 1s ease-in-out;
+}
+
+@keyframes slidebg {
+    0%   { background-image: url('images/image1_bg.png'); }
+    25%  { background-image: url('images/image2_bg.png'); }
+    50%  { background-image: url('images/image3_bg.png'); }
+    75%  { background-image: url('images/image4_bg.png'); }
+    100% { background-image: url('images/image5_bg.png'); }
+}
+
+/* Navbar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav .logo img {
+    height: 50px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+nav ul li a:hover,
+nav ul li a.button--is-active {
+    color: #00d9ff;
+}
+
+nav .icon {
+    display: flex;
+    gap: 15px;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Hero Section */
+.main {
+    text-align: center;
+    margin: 100px auto 50px auto;
+    max-width: 800px;
+}
+
+.main h1 {
+    font-size: 50px;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 15px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.main span {
+    color: #00d9ff;
+}
+
+.main_btn {
+    margin-top: 20px;
+}
+
+.main_btn a {
+    background: #007BFF;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.main_btn a:hover {
+    background: #0056b3;
+}
+
+/* Section General */
+section, .tips, .threats, .resources, .pricing, .about, .contact {
+    padding: 80px 40px;
+    text-align: center;
+}
+
+/* Tips with background video */
+.tips .menu_box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.tips .menu_card {
+    position: relative;
+    width: 350px;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.tips .menu_card video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0; left: 0;
+    z-index: 0;
+}
+
+.tips .menu_card h2,
+.tips .menu_card p {
+    position: relative;
+    z-index: 1;
+    background: rgba(0,0,0,0.6);
+    margin: 10px;
+    padding: 10px;
+    border-radius: 8px;
+}
+.threats .menu_box {
+    display: grid;
+    grid-template-columns: repeat(2, auto); /* auto width instead of 1fr */
+    column-gap: 25px; /* horizontal spacing between cards */
+    row-gap: 20px;    /* vertical spacing between rows */
+    justify-content: center; /* center the 2-card grid horizontally */
+}
+.logout-btn {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #cc0000;
+}
+
+
+
+.threats .menu_card {
+    background: rgba(0,0,0,0.7);
+    padding: 40px;
+    border-radius: 12px;
+    width: 250px; /* fixed width */
+}
+
+
+/* Modal for YouTube video */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal iframe {
+    width: 80%;
+    height: 70%;
+    border: none;
+    border-radius: 10px;
+}
+
+.modal .close {
+    position: absolute;
+    top: 20px; right: 30px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+/* Resources Section */
+.resources ul {
+    list-style: disc;  /* bullet points */
+    padding-left: 60px; /* indent bullets */
+    display: block;    /* default vertical */
+    gap: 0;            /* remove horizontal gaps */
+}
+
+
+.resources ul li a {
+    display: block;
+    padding: 15px 25px;
+     margin-bottom: 10px; /* spacing between items */
+    background: rgba(0,0,0,0.7);
+    border-radius: 10px;
+    text-decoration: none;
+    color: #00d9ff;
+    transition: 0.3s;
+}
+
+
+.resources ul li a:hover {
+    background: #00d9ff;
+    color: black;
+}
+
+/* Pricing */
+.pricing .menu_box {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.pricing .menu_card {
+    width: 250px;
+    background: rgba(0,0,0,0.7);
+    padding: 20px;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.pricing .menu_card:hover {
+    transform: scale(1.05);
+    background: rgba(0,0,0,0.9);
+}
+
+.pricing h3 {
+    margin-top: 10px;
+    color: #00d9ff;
+}
+
+/* About + Contact */
+.about p, .contact p {
+    background: rgba(0,0,0,0.6);
+    padding: 15px;
+    border-radius: 8px;
+    display: inline-block;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 15px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    margin-top: 40px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .tips .menu_card,
+    .pricing .menu_card {
+        width: 90%;
+    }
+
+    .modal iframe {
+        width: 95%;
+        height: 60%;
+    }
+}
+/* Courses Section */
+.courses-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.course-card {
+  flex: 1;
+  max-width: 300px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0px 6px 15px rgba(0,0,0,0.25);
+}
+
+.course-card h3 {
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+.course-card p {
+  font-size: 14px;
+  margin-bottom: 15px;
+  color: #555;
+}
+
+.price {
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  color: #e67e22;
+  margin-bottom: 10px;
+}
+
+.enroll-btn {
+  background-color: #3498db;
+  color: white;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.enroll-btn:hover {
+  background-color: #2980b9;
+}
